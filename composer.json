@@ -1,0 +1,68 @@
+{
+    "name": "schildhain/laravel-package-skeleton",
+    "keywords": [
+        "laravel",
+        "package",
+        "laravel-package-skeleton",
+        "package-skeleton",
+        "schildhain"
+    ],
+    "description": "Laravel Package Skeleton",
+    "license": "MIT",
+    "homepage": "https://github.com/schildhain/laravel-package-skeleton",
+    "authors": [
+        {
+            "name": "Matthias Wohlgemuth",
+            "email": "wohlgemuth@schildhain.de",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0",
+        "illuminate/contracts": "^8.0",
+        "spatie/laravel-package-tools": "^1.6"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.13",
+        "phpunit/phpunit": "^9.3",
+        "vimeo/psalm": "^4.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Schildhain\\PackageSkeleton\\": "src",
+            "Schildhain\\PackageSkeleton\\Database\\Factories\\": "database/factories",
+            "Schildhain\\PackageSkeleton\\Database\\Seeders\\": "database/seeders"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Schildhain\\PackageSkeleton\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Schildhain\\PackageSkeleton\\PackageSkeletonServiceProvider"
+            ],
+            "aliases": {
+                "PackageSkeleton": "Schildhain\\PackageSkeleton\\PackageSkeletonFacade"
+            }
+        }
+    },
+    "scripts": {
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit --colors=always",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "post-create-project-cmd": [
+            "php configure-skeleton.php"
+        ]
+    }
+}
